@@ -1,10 +1,6 @@
 <?php
 
-class MyDB extends SQLite3 {
-    function __construct() {
-        $this->open('test.db');
-    }
-    
+class MyDB extends SQLite3 {    
     function get_query_result($query) {
         $data = $this->query($query);
         $result = array();
