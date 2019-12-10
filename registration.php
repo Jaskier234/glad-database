@@ -10,8 +10,14 @@ Twoje hasło to <?php echo $_POST["password"]; ?> </br>
 </html>  -->
 <?php 
 
-require 'database.php'
+require 'database.php';
 
-Database::get_query_result("INSERT INTO users VALUES ()")
+$result = Database::insert_user($_POST["login"], $_POST["password"]);
 
- ?>
+if ($result == False) {
+    echo "Nie udało się założyć konta";
+} else {
+    echo "Witaj ".$_POST["login"];
+}
+
+?>
