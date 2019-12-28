@@ -12,7 +12,7 @@ CREATE TABLE orders (
     due_date TIMESTAMP,
     time_window_length FLOAT,
     price NUMERIC(9,2),
-    address CHAR(100)
+    address VARCHAR(100)
 );
 
 CREATE TABLE orders_archive (
@@ -22,13 +22,16 @@ CREATE TABLE orders_archive (
     due_date TIMESTAMP,
     time_window_length FLOAT,
     price NUMERIC(9,2),
-    address CHAR(100)
+    address VARCHAR(100)
 );
 
+-- TODO dodać trigger, który usuwa puste produkty
+-- TODO ewentualnie po dostawie łączy takie same(na podstawie unikalnego kodu)
 CREATE TABLE product (
     product_id SERIAL PRIMARY KEY,
-    product_name CHAR(255),
-    quantity FLOAT,
+    product_name VARCHAR(255),
+    quantity FLOAT CHECK (quantity >= 0),
+    unit CHAR(4) NOT NULL, -- TODO check if value is correct szt./kg.
     price NUMERIC(9,2),
     depot INT
 );
