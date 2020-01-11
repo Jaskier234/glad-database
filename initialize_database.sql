@@ -28,7 +28,7 @@ CREATE TABLE orders_archive (
 -- TODO dodać trigger, który usuwa puste produkty
 -- TODO ewentualnie po dostawie łączy takie same(na podstawie unikalnego kodu)
 CREATE TABLE product (
-    product_id SERIAL PRIMARY KEY,
+    product_id INT PRIMARY KEY,
     product_name VARCHAR(255),
     quantity FLOAT CHECK (quantity >= 0),
     unit CHAR(4) NOT NULL, -- TODO check if value is correct szt./kg.
