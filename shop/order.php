@@ -44,7 +44,7 @@ foreach($_SESSION['basket'] as $product) {
     $quantity = $product[1];
     
     // usuń z bazy danych produkty
-    $result = Database::remove_product($product_id, $quantity);
+    $result = Database::update_product($product_id, $quantity);
     if ($result === false) {
         Database::get_query_result("ROLLBACK");
         echo "złożenie zamówienia nie powiodło się";
