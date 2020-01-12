@@ -20,6 +20,12 @@ class Database {
                     throw new Exception("Failed to prepare query: get_product", 1);
                 }
                 
+                // insert new products
+                $result = pg_prepare(Database::$database_connection, "insert_product", "INSERT INTO product (product_id, product_name, quantity, unit, price, depot) VALUES ($1, $2, $3, $4, $5, $6)");
+                if ($result === False) {
+                    throw new Exception("Failed to prepare query: insert_product", 1);
+                }
+                
                 // change amount in Database
                 $result = pg_prepare(Database::$database_connection, "update_product", "UPDATE product SET quantity = quantity + $1 WHERE product_id = $2");
                 if ($result === False) {
@@ -77,10 +83,22 @@ class Database {
         return pg_execute(Database::$database_connection, "get_product", array($id));
     }
     
+    // insert new product 
+    static function insert_product($product_info) {
+        Database::initialize_database();
+        
+        return pg_execute(Database::$database_connection, "insert_product", $product_info);
+    }
+    
     // Updates product amount in database.
     // If amount is negative, amount decreases.
     static function update_product($id, $amount) {
         Database::initialize_database();
+        
+        // There is no such product in the database
+        if (pg_fetch_all(Database::get_product($id)) === false) {
+            return NULL;
+        }
         
         return pg_execute(Database::$database_connection, "update_product", array($amount, $id));
     }
