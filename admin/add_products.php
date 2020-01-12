@@ -12,18 +12,16 @@ require '../database.php';
 
 Database::get_query_result("BEGIN TRANSACTION ISOLATION LEVEL Serializable") or die("Failed to start transaction");
 
-// var_dump(pg_fetch_all(Database::get_product(1)));
-
 while ($line = fgetcsv($file, 1000, ',')) {
     $id = $line[0];
     $amount = $line[2];
     
     $result = Database::update_product($id, $amount);
     
-    if (result === false) {
+    if ($result === false) {
         Database::get_query_result("ROLLBACK");
         die("Nie udało się dodać zamówienia");
-    } else if (result === NULL) {
+    } else if ($result === NULL) {
         if (Database::insert_product($line) === false) {
             Database::get_query_result("ROLLBACK");
             die("Nie udało się dodać zamówienia");
@@ -32,5 +30,6 @@ while ($line = fgetcsv($file, 1000, ',')) {
 }
 
 Database::get_query_result("COMMIT");
+echo "Pomyślnie dodano produkty";
 
  ?>
