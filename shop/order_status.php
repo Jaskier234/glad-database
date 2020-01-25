@@ -26,6 +26,8 @@ $tw_end = date("Y-m-d H:i:s", strtotime($order_information['due_date']) + (3600 
 $price = $order_information['price'];
 $address = $order_information['address'];
 
+// TODO tabelka
+
 echo "Zamówienie złożone :".$order_date."<br>";
 echo "Planowane dostarczenie pomiędzy:".$tw_start." a ".$tw_end."<br>";
 echo "Cena :".$price."<br>";

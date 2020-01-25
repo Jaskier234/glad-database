@@ -24,6 +24,10 @@
             <th> <input type="number" name="address"> </th>
         </tr>
         <tr>
+            <th> <input type="checkbox" name="iscag"> Zamów do punktu collect and go </th>
+            <th> <?php require 'cag_select.php' ?> </th>
+        </tr>
+        <tr>
             <th><input type="submit" value=zamów></th>
         </tr>
     </table>

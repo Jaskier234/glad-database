@@ -51,13 +51,19 @@ class Database {
                 }
                 
                 // get order elements
-                
                 $result = pg_prepare(Database::$database_connection, "get_order_elements", "SELECT p.product_name, pio.quantity, p.price * pio.quantity
                     FROM product_in_order pio JOIN product p ON pio.product_id = p.product_id
                     WHERE order_id = $1;");
                 if ($result === False) {
                     throw new Exception("Failed to prepare query: get_order_elements", 1);
                 }
+                
+                // add order to cag_id
+                $result = pg_prepare(Database::$database_connection, "add_to_cag", "UPDATE collect_and_go SET used = used + 1 WHERE cag_id = $1");
+                if ($result === False) {
+                    throw new Exception("Failed to prepare query: add_to_cag", 1);
+                }
+                
             } catch(Exception $e) {
                 echo "Can't initialize database connection: ",  $e->getMessage(), "\n";
             }
@@ -125,6 +131,12 @@ class Database {
         Database::initialize_database();
         
         return pg_execute(Database::$database_connection, "get_order_elements", array($order_id));
+    }
+    
+    static function add_product_to_cag($cag_id) {
+        Database::initialize_database();
+        
+        return pg_execute(Database::$database_connection, "add_to_cag", array($cag_id));
     }
 }
 

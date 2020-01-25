@@ -13,8 +13,16 @@ if (isset($_SESSION['basket']) === false) {
 }
 
 // TODO opcja zamówienia do punktu cag jako lista rozwijana
+// var_dump($_POST);
+
 
 Database::get_query_result("BEGIN TRANSACTION ISOLATION LEVEL Serializable") or die("Failed to start transaction");
+
+if ($_POST["iscag"] === "on") {
+    $_POST["address"] = $_POST["cag"]; // assuming cag id is address id of collect and go point 
+    // update cag point status
+    Database::add_product_to_cag($_POST["cag"]);
+}
 
 $summary_price = 0;
 
