@@ -56,7 +56,7 @@ CREATE TABLE depot (
 
 CREATE TABLE collect_and_go (
     cag_id SERIAL PRIMARY KEY,
-    address CHAR(255),
+    address VARCHAR(255),
     capacity INT,
     used INT CHECK (used <= capacity) -- Also contains orders ordered but not in C&G point
 );
