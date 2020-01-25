@@ -12,6 +12,8 @@ $result = Database::get_query_result("SELECT d.depot_id, d.address, SUM(COALESCE
 
 $magazines_list = pg_fetch_all($result, PGSQL_NUM);
 
+// TODO wypisz procent zamiast liczby
+
 show_array_as_table($magazines_list, array(0, 1, 2));
 
  ?>
