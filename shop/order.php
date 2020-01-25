@@ -12,6 +12,8 @@ if (isset($_SESSION['basket']) === false) {
     exit();
 }
 
+// TODO opcja zamówienia do punktu cag jako lista rozwijana
+
 Database::get_query_result("BEGIN TRANSACTION ISOLATION LEVEL Serializable") or die("Failed to start transaction");
 
 $summary_price = 0;
@@ -27,7 +29,7 @@ foreach($_SESSION['basket'] as $product) {
 }
 
 // TODO przypisać urzytkownika do zamówienia, jeśli zalogowany
-// TODO sprawdzić poprawność danych wejściowych
+// TODO sprawdzić poprawność danych wejściowych?
 $due_date = $_POST['date']." ".$_POST['hour'];
 $result = Database::insert_order(NULL, date("Y-m-d H:i:s"), $due_date, $_POST['time_window'], $summary_price, $_POST['address']);
 

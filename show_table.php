@@ -1,7 +1,9 @@
 <?php 
 
 // TODO: dodać opcję nagłówka
+
 function show_array_as_table($data, $columns) {    
+    // var_dump($data);// TODO nothing to show
     echo "<table>";
     foreach($data as $row) {
         echo "<tr>";
