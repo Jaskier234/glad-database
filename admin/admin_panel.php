@@ -9,7 +9,7 @@
     
     <a href="delivery_form.php">dostawa</a>
     
-    <?php phpinfo(); ?>
+    <!-- <?php phpinfo(); ?> -->
     
 </body>
 </html>
