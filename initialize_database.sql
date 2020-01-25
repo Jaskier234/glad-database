@@ -25,8 +25,6 @@ CREATE TABLE orders_archive (
     address VARCHAR(100)
 );
 
--- TODO dodać trigger, który usuwa puste produkty
--- TODO ewentualnie po dostawie łączy takie same(na podstawie unikalnego kodu)
 CREATE TABLE product (
     product_id INT PRIMARY KEY,
     product_name VARCHAR(255),
@@ -52,11 +50,14 @@ CREATE TABLE product_in_order_archive (
 
 CREATE TABLE depot (
     depot_id SERIAL PRIMARY KEY,
-    address CHAR(255)
+    address VARCHAR(255), -- TODO Add more information about depots. np. pojemność (objętość = jakaś funkcja od produktów)
+    capacity INT,
+    used INT -- no need to preform check like in c&g
 );
 
 CREATE TABLE collect_and_go (
     cag_id SERIAL PRIMARY KEY,
     address CHAR(255),
-    rsa_public_key CHAR(255)
+    capacity INT,
+    used INT CHECK (used <= capacity) -- Also contains orders ordered but not in C&G point
 );
