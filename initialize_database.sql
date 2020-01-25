@@ -51,8 +51,7 @@ CREATE TABLE product_in_order_archive (
 CREATE TABLE depot (
     depot_id SERIAL PRIMARY KEY,
     address VARCHAR(255), -- TODO Add more information about depots. np. pojemność (objętość = jakaś funkcja od produktów)
-    capacity INT,
-    used INT -- no need to preform check like in c&g
+    capacity INT NOT NULL CHECK (capacity > 0)
 );
 
 CREATE TABLE collect_and_go (
