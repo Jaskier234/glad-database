@@ -12,10 +12,6 @@ if (isset($_SESSION['basket']) === false) {
     exit();
 }
 
-// TODO opcja zamówienia do punktu cag jako lista rozwijana
-// var_dump($_POST);
-
-
 Database::get_query_result("BEGIN TRANSACTION ISOLATION LEVEL Serializable") or die("Failed to start transaction");
 
 if ($_POST["iscag"] === "on") {
