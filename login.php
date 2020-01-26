@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require 'database.php';
 
 $user_info = pg_fetch_row(Database::get_user($_POST['login']));
