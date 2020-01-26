@@ -1,5 +1,8 @@
 <?php 
 
+require '../authenticate.php';
+authenticate('admin');
+
 $filename = $_FILES['products']['tmp_name'];
 
 $file = fopen($filename, 'r') or die("Failed to open file </br>");

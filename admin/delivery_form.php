@@ -4,7 +4,10 @@
 
 </head>
 <body>
-    
+    <?php 
+        require '../authenticate.php';
+        authenticate('admin');
+     ?>
     Dodaj produkty do bazy danych
     
     <form action="add_products.php" method="post" action="order.php" enctype="multipart/form-data">

@@ -1,5 +1,8 @@
 <?php 
 
+require '../authenticate.php';
+authenticate('admin');
+
 require '../database.php';
 require '../show_table.php';
 
