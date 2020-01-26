@@ -9,13 +9,13 @@ if ($user_info === false) {
     echo "Nie udało się zalogować";
 }
 
-$hash = $user_info['password'];
+$hash = $user_info[1];
 $password = $_POST['password'];
 
 if (password_verify($password, $hash)) {
     echo "Pomyślnie zalogowano";
-    $_SESSION['user_id'] = $user_info['user_id'];
-    $_SESSION['is_admin'] = $user_info['is_admin'];
+    $_SESSION['user_id'] = $user_info[0];
+    $_SESSION['is_admin'] = $user_info[2];
 } else {
     echo "nie udało się zalogować";
 }
