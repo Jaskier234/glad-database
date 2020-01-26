@@ -82,7 +82,7 @@ echo "złożono zamówienie";
 unset($_SESSION['basket']);
 
 // TODO lepszy przycisk do statusu zamówienia
-echo '<form method=post action=order_status.php>
+echo '<form method=get action=order_status.php>
     <input type=hidden name=order_id value='.$order_id.' />
     <input type=submit value="status zamówienia" />
 </form>';

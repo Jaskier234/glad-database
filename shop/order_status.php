@@ -5,12 +5,12 @@
 require '../database.php';
 require '../show_table.php';
 
-if(isset($_POST['order_id']) === false) {
+if(isset($_GET['order_id']) === false) {
     echo "Not found";
     header("HTTP/1.0 404 Not Found");
 }
 
-$order_id = $_POST['order_id'];
+$order_id = $_GET['order_id'];
 
 // print order information
 $order_information = pg_fetch_all(Database::get_order($order_id))[0];
