@@ -8,6 +8,7 @@ require '../show_table.php';
 if(isset($_GET['order_id']) === false) {
     echo "Not found";
     header("HTTP/1.0 404 Not Found");
+    exit();
 }
 
 $order_id = $_GET['order_id'];
