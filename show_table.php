@@ -2,9 +2,16 @@
 
 // TODO: dodać opcję nagłówka
 
-function show_array_as_table($data, $columns) {    
+function show_array_as_table($data, $columns, $headers) {    
     // var_dump($data);// TODO nothing to show
-    echo "<table>";
+    echo "<table class=tabela>";
+    echo "<tr>";
+    for($i = 0; $i < count($columns); $i++) {
+        echo "<th>";
+        echo $headers[$i];
+        echo "</th>";
+    } 
+    echo "</tr>";
     foreach($data as $row) {
         echo "<tr>";
         for($i = 0; $i < count($columns); $i++) {

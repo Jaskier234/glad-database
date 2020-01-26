@@ -17,6 +17,6 @@ for ($i = 0; $i < count($orders); $i++) {
     $orders[$i][] = $link;
 }
 
-show_array_as_table($orders, array(0, 1, 2, 3, 4, 5, 6, 7));
+show_array_as_table($orders, array(0, 1, 2, 3, 4, 5, 6, 7), array("id", "użytkownik", "data złożenia", "data dostarczenia", "okno czasowe", "adres", "cena"));
 
  ?>

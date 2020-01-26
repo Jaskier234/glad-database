@@ -17,6 +17,6 @@ $magazines_list = pg_fetch_all($result, PGSQL_NUM);
 
 // TODO wypisz procent zamiast liczby
 
-show_array_as_table($magazines_list, array(0, 1, 2));
+show_array_as_table($magazines_list, array(0, 1, 2), array("id", "adres", "zajęte"));
 
  ?>

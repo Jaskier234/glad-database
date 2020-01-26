@@ -1,3 +1,10 @@
+<html>
+<head>
+    
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
 <?php 
 
 // TODO sprawdzanie tożsamości
@@ -41,6 +48,8 @@ echo "Zamówione produkty:<br>";
 
 $elements = pg_fetch_all(Database::get_order_elements($order_id), PGSQL_NUM);
 
-show_array_as_table($elements, array(0, 1, 2));
+show_array_as_table($elements, array(0, 1, 2), array("Produkt", "ilość", "cena"));
 
  ?>
+</body>
+</html>

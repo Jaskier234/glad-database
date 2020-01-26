@@ -11,6 +11,6 @@ $result = Database::get_query_result("SELECT cag_id, address, used FROM collect_
 
 $cag_list = pg_fetch_all($result, PGSQL_NUM);
 
-show_array_as_table($cag_list, array(0, 1, 2));
+show_array_as_table($cag_list, array(0, 1, 2), array("id", "adres", "ile zajęte"));
 
  ?>

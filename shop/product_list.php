@@ -37,6 +37,6 @@ for($i = 0; $i < count($product_list); $i++) {
     $product_list[$i][] = sprintf($input, $id, ($unit === "szt.")?("1"):("0.001"), $quantity, $id, $id);
 }
 
-show_array_as_table($product_list, array(0, 1, 2, 5));
+show_array_as_table($product_list, array(0, 1, 2, 5), array("Produkt", "cena jed.", "dostępne", "zamów"));
 
 ?>  

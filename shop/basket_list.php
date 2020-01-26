@@ -20,7 +20,7 @@ foreach($_SESSION['basket'] as $product) {
     $sum += $quantity * $row[2];
 }
 
-show_array_as_table($basket, array(0, 1, 2, 3));
+show_array_as_table($basket, array(0, 1, 2, 3), array("Produkt", "ilość", "cena jedn.", "cena"));
 
 echo "Razem: ".$sum;
 
