@@ -9,9 +9,15 @@ class Database {
                 Database::$database_connection = pg_connect("host=localhost dbname=testdb user=glad password=a1a2a3a4a5");
                 
                 // adding new user
-                $result = pg_prepare(Database::$database_connection, "insert_user", "INSERT INTO users (login, password) VALUES ($1, $2)");
+                $result = pg_prepare(Database::$database_connection, "insert_user", "INSERT INTO users (login, password, is_admin) VALUES ($1, $2, false)");
                 if ($result === False) {
                     throw new Exception("Failed to prepare query: insert_user", 1);
+                }
+                
+                // getting user information
+                $result = pg_prepare(Database::$database_connection, "get_user", "SELECT user_id, password, is_admin FROM users WHERE login = $1");
+                if ($result === False) {
+                    throw new Exception("Failed to prepare query: get_user", 1);
                 }
                 
                 // accesing product information
@@ -81,6 +87,12 @@ class Database {
         Database::initialize_database();
         
         return pg_execute(Database::$database_connection, "insert_user", array($login, $password));
+    }
+    
+    static function get_user($login) {
+        Database::initialize_database();
+        
+        return pg_execute(Database::$database_connection, "get_user", array($login));
     }
     
     static function get_product($id) {

@@ -1,8 +1,8 @@
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
-    login CHAR(255) NOT NULL UNIQUE,
-    password CHAR(255) NOT NULL,
-    is_admin BOOLEAN NOT NULL
+    login VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    is_admin BOOLEAN NOT NULL -- jak sprawdzać punkty c&g
 );
 
 CREATE TABLE orders (
