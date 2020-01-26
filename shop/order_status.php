@@ -22,7 +22,7 @@ if ($order_information === false) {
 }
 
 require '../authenticate.php';
-authenticate('user/admin', $order_information['user_name']);
+authenticate('user/admin', strval($order_information['user_name']));
 
 $order_date = $order_information['order_date'];
 $tw_start = $order_information['due_date'];
