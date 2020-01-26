@@ -2,6 +2,9 @@
 
 session_start();
 
+require '../authenticate.php';
+authenticate('user');
+
 require '../database.php';
 // 
 // var_dump($_POST['date']);
@@ -32,10 +35,8 @@ foreach($_SESSION['basket'] as $product) {
     $summary_price += $quantity * $price;
 }
 
-// TODO przypisać urzytkownika do zamówienia, jeśli zalogowany
-// TODO sprawdzić poprawność danych wejściowych?
 $due_date = $_POST['date']." ".$_POST['hour'];
-$result = Database::insert_order(NULL, date("Y-m-d H:i:s"), $due_date, $_POST['time_window'], $summary_price, $_POST['address']);
+$result = Database::insert_order($_SESSION['user_id'], date("Y-m-d H:i:s"), $due_date, $_POST['time_window'], $summary_price, $_POST['address']);
 
 if ($result === false) {
     Database::get_query_result("ROLLBACK");

@@ -4,6 +4,10 @@
 
 </head>
 <body>
+    <?php 
+    require '../authenticate.php';
+    authenticate('user');
+     ?>
 <form method="post" action="order.php">
     <table>
         <tr>

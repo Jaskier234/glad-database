@@ -21,6 +21,9 @@ if ($order_information === false) {
     exit();
 }
 
+require '../authenticate.php';
+authenticate('user/admin', $order_information['user_name']);
+
 $order_date = $order_information['order_date'];
 $tw_start = $order_information['due_date'];
 $tw_end = date("Y-m-d H:i:s", strtotime($order_information['due_date']) + (3600 * $order_information['time_window_length']));

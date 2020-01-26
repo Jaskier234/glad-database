@@ -2,6 +2,9 @@
 
 session_start();
 
+require '../authenticate.php';
+authenticate('user');
+
 require '../database.php';
 require '../show_table.php';
 

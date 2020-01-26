@@ -51,7 +51,7 @@ class Database {
                 }
                 
                 // get order
-                $result = pg_prepare(Database::$database_connection, "get_order", "SELECT order_date, due_date, time_window_length, price, address FROM orders WHERE order_id = $1");
+                $result = pg_prepare(Database::$database_connection, "get_order", "SELECT order_date, due_date, time_window_length, price, address, user_name FROM orders WHERE order_id = $1");
                 if ($result === False) {
                     throw new Exception("Failed to prepare query: get_order", 1);
                 }
